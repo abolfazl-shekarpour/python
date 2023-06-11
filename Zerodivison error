@@ -1,0 +1,13 @@
+number=1
+while number>0:
+ try:
+    number=int(input("enter a number"))
+    number2=int(input("enter another number"))
+    if number<number2:
+      raise ValueError("number should be greater than number2")
+    e= number/number2
+    print(e)
+ except ValueError:
+   print("invalid number")
+ except ZeroDivisionError:
+   print("zero division")  
