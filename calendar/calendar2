@@ -1,0 +1,24 @@
+import tkinter as tk
+from tkcalendar import Calendar
+import datetime
+
+root = tk.Tk()
+root.title('My Calendar')
+root.geometry("600x400")
+
+events = {
+    '2023-09-28': ('Tehran', 'meeting'),
+    '2023-08-15': ('Mashhad', 'meeting'),
+    '2023-07-30': ('Isfahan', 'meeting')
+}
+
+cal = Calendar(root, selectmode='day', year=2023, month=6)
+
+for k in events.keys():
+    date = datetime.datetime.strptime(k, "%Y-%m-%d").date()
+    cal.calevent_create(date, events[k][0], events[k][1])
+
+cal.tag_config('meeting', background='violet red', foreground='white')
+cal.pack(fill='both', expand=True)
+
+root.mainloop()
