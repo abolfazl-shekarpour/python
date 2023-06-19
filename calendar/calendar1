@@ -1,1 +1,51 @@
+import tkinter as tk
+from tkcalendar import Calendar
+import datetime
+
+def change_background():
+    current_bg = root.cget('bg')
+    new_bg = 'black' if current_bg == 'white' else 'white'
+    root.config(bg=new_bg)
+    cal.config(background=new_bg)
+
+def change_language():
+    selected_lang = language_var.get()
+    if selected_lang == 'English':
+        # Set English language settings
+        cal.config(locale='en_US')
+    elif selected_lang == 'Farsi':
+        # Set Farsi language settings
+        cal.config(locale='fa')
+    elif selected_lang == 'Arabic':
+        # Set Arabic language settings
+        cal.config(locale='ar')
+
+root = tk.Tk()
+root.title('My Calendar')
+root.geometry("600x400")
+
+events = {
+    '2023-09-28': ('Tehran', 'meeting'),
+    '2023-08-15': ('Mashhad', 'meeting'),
+    '2023-07-30': ('Isfahan', 'meeting')
+}
+
+cal = Calendar(root, selectmode='day', year=2023, month=6)
+cal.pack(fill='both', expand=True)
+
+# Button to change the background color
+change_bg_button = tk.Button(root, text='Change Background', command=change_background)
+change_bg_button.pack()
+
+# Dropdown menu to select language
+language_var = tk.StringVar()
+language_var.set('English')  # Default language selection
+language_menu = tk.OptionMenu(root, language_var, 'English', 'Farsi', 'Arabic', command=change_language)
+language_menu.pack()
+
+for k in events.keys():
+    date = datetime.datetime.strptime(k, "%Y-%m-%d").date()
+    cal.calevent_create(date, events[k][0], events[k][1])
+
+root.mainloop()
 
