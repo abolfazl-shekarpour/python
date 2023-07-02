@@ -1,0 +1,32 @@
+def find_possible_words(word):
+    mappings = {
+        'L': ['L', 'K'],
+        'X': ['X', 'C'],
+        'T': ['T', 'Y'],
+        'N': ['N', 'M']
+    }
+
+    possible_words = [word]
+    mistake_count = 0
+    for i, letter in enumerate(word):
+        if letter in mappings:
+            possible_words = [w[:i] + mapped_letter + w[i+1:] for w in possible_words for mapped_letter in mappings[letter]]
+            mistake_count += 1
+
+    # Check for two identical letters
+    for letter in set(word):
+        if word.count(letter) >= 2:
+            mistake_count += 1
+
+    return possible_words, mistake_count
+
+
+typed_word = input("Please enter the typed word: ").upper()
+
+possible_words, mistake_count = find_possible_words(typed_word)
+
+print("Possible interpretations:")
+for word in possible_words:
+    print(word)
+
+print("According to number of possible mistakes there  are :", mistake_count)
