@@ -1,0 +1,13 @@
+while True:
+    try:
+        number = float(input("Enter a number: "))
+        if number > 0:
+            print(f"The square of {number} is {number ** 2}")
+        elif number == 0:
+            print("Error: Zero entered!")
+        else:
+            print(f"Error: {number} is not a positive number!")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+    except ZeroDivisionError:
+        print("Zero division error.")
