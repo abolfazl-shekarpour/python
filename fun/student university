@@ -1,0 +1,35 @@
+num_students = int(input("Please enter the number of students: "))
+students = []
+
+# Get the names of the students
+for i in range(num_students):
+    name = input("Please enter the name of student {}: ".format(i + 1))
+    students.append(name)
+
+# Students enter the university
+print("Students are waiting for their friends to enter the university...")
+
+# Reverse order of entering and greet each other
+for i in range(num_students - 1, -1, -1):
+    current_student = students[i]
+    friends = students[:i]  # Get the list of friends before the current student
+
+    # Greet each friend individually
+    for friend in friends:
+        print("{}: Hi, {}!".format(current_student, friend))
+
+    print("{}: Hi, everyone! I'm here!".format(current_student))
+
+# Students start leaving the university
+print("\nStudents start leaving the university...")
+
+# Say goodbye in reverse order
+for i in range(num_students):
+    current_student = students[i]
+    friends = students[i + 1:]  # Get the list of friends after the current student
+
+    print("{}: Goodbye, everyone!".format(current_student))
+
+    # Respond to goodbye from each friend individually
+    for friend in friends:
+        print("{}: Goodbye, {}!".format(friend, current_student))
