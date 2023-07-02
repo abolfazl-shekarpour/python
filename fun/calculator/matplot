@@ -1,0 +1,8 @@
+n = int(input("Please enter an integer (n): "))
+
+reverse_n = int(str(n)[::-1])
+
+if n == reverse_n:
+    print("yes")
+else:
+    print("no")
