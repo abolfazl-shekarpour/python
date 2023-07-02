@@ -1,0 +1,24 @@
+from collections import Counter
+
+# Get the number of magic markers
+n = int(input("Enter the number of magic markers: "))
+
+# Get the color numbers of the markers
+colors = []
+for i in range(n):
+    color = int(input("Enter the color number of marker {}: ".format(i + 1)))
+    colors.append(color)
+
+# Count the occurrences of each color
+color_counts = Counter(colors)
+
+# Find the minimum count
+min_count = min(color_counts.values())
+
+# Find the colors with the minimum count
+min_colors = [color for color, count in color_counts.items() if count == min_count]
+
+# Print the colors with the minimum count
+print("Colors with the least number of markers:")
+for color in min_colors:
+    print(color)
