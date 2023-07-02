@@ -1,0 +1,14 @@
+birthday = input(" Enter your birthday date in this format YYMMDD : ")
+
+year = int(birthday[:2])
+month = int(birthday[2:4])
+day = int(birthday[4:6])
+
+if year >= 0 and year <= 29:
+    year += 2000
+else:
+    year += 1900
+
+print("year", year)
+print("month", month)
+print("day", day)
