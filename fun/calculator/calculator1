@@ -1,0 +1,3 @@
+Messi=int(input("Enter a number"))
+ronaldo=int(input("Enter ANOTHER number"))
+FIFA=int(input(Messi*ronaldo))
