@@ -1,0 +1,13 @@
+n=int(input("Enter a number")),
+k = int(input("Enter another number "))
+
+result = n
+
+try:
+    for i in range(k):
+     result //= 2
+
+    print( result)
+
+except ZeroDivisionError:
+    print("Eror")
